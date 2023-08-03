@@ -21,13 +21,23 @@ export default function HomePage() {
 
   const [theme,setTheme] = useState(THEMES.DARK);
 
-  const setLightTheme = () => {};
-  const setDarkTheme = () => {};
-  const toggleTheme = () => {};
+  const setLightTheme = () => {
+    setTheme(THEMES.LIGHT);
+  };
+  const setDarkTheme = () => {
+    setTheme(THEMES.DARK);
+  };
+  const toggleTheme = () => {
+    if(theme.name === "dark"){
+      setTheme(THEMES.LIGHT);
+    }else {
+      setTheme(THEMES.DARK);
+    }
+  };
 
   return (
     <div style={{backgroundColor:theme.bgColor ,minHeight:"100vh"}}>
-      <ThemeContext.Provider value={{theme}}>
+      <ThemeContext.Provider value={{theme,setDarkTheme,setLightTheme,toggleTheme}}>
       <Header />
       <Detail />
       <Controller />
